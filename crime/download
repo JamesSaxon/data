@@ -1,0 +1,27 @@
+curl -o portland_or_2014.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2014.zip  
+curl -o portland_or_2013.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2013.zip  
+curl -o portland_or_2012.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2012.zip  
+curl -o portland_or_2011.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2011.zip  
+curl -o portland_or_2010.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2010.zip  
+curl -o portland_or_2009.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2009.zip  
+curl -o portland_or_2008.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2008.zip  
+curl -o portland_or_2007.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2007.zip  
+curl -o portland_or_2006.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2006.zip  
+curl -o portland_or_2005.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2005.zip  
+curl -o portland_or_2004.zip           ftp://ftp02.portlandoregon.gov/CivicApps/crime_incident_data_2004.zip  
+for z in $(ls portland*zip | sed "s/.zip//"); do unzip $z.zip; mv crime_incident_data.csv $z.zip; rm $z.zip; done
+
+curl -o new_york_ny.csv                https://data.cityofnewyork.us/api/views/hyij-8hr7/rows.csv             
+curl -o chicago_il.csv                 "https://data.cityofchicago.org/api/views/6zsd-86xi/rows.csv?accessType=DOWNLOAD&bom=true&query=select+*"
+curl -o los_angeles_ca.csv             https://data.lacity.org/api/views/s9rj-h3s6/rows.csv                   
+curl -o boston_ma_2012-2015.csv        https://data.cityofboston.gov/api/views/7cdf-6fgx/rows.csv             
+curl -o boston_ma_2015-present.csv     https://data.cityofboston.gov/api/views/fqn4-4qap/rows.csv             
+curl -o philadelphia_pa.csv            https://data.phila.gov/api/views/sspu-uyfa/rows.csv                    
+curl -o phoenix_az.csv                 https://www.phoenix.gov/OpenDataFiles/Crime%20Stats.csv                
+curl -o denver_co.csv                  https://www.denvergov.org/download/gis/crime/csv/crime.csv             
+
+curl -o san_francisco_ca.csv           https://data.sfgov.org/api/views/tmnf-yvry/rows.csv
+
+curl -o dallas_tx.csv                  https://www.dallasopendata.com/api/views/tbnj-w5hb/rows.csv
+
+
