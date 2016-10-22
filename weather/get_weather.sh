@@ -25,4 +25,6 @@ sed -i -e "s/<br \/>//" -e "/^$/d" */*
 
 for f in $(grep "No .*data available" */* | sed "s/:.*//"); do rm $f; done
 for f in $(wc -l */* | grep " 1 " | tr -s ' ' | cut -f3 -d" "); do rm $f; done
+
+./merge.py
  
