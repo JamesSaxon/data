@@ -2,7 +2,6 @@
 
 # with thanks and apologies to weather underground...
 
-# MDW
 for w in JFK PHL PDX LAX BOS PHX DEN SFO DFW; do 
 
   mkdir -p ${w}
@@ -15,9 +14,6 @@ for w in JFK PHL PDX LAX BOS PHX DEN SFO DFW; do
       done
     done
   done
-
-  # cat ${w}/2* | sed "s/<br \/>//" | sort | uniq | sort -k 14 -t"," > weather_${w}.csv
-  # rm ${w}/
 
 done
 
