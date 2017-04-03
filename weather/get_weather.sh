@@ -2,7 +2,8 @@
 
 # with thanks and apologies to weather underground...
 
-for w in JFK PHL PDX LAX BOS PHX DEN SFO DFW; do 
+# for w in JFK PHL PDX LAX BOS PHX DEN SFO DFW MCO; do 
+for w in MCO; do
 
   mkdir -p ${w}
   for y in $(seq 2000 2016); do 

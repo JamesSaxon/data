@@ -4,7 +4,7 @@ import pandas as pd
 import pytz
 import os  
 
-def merge_weather_data(airport):
+def merge_weather_data(airport, tz):
 
     df_list = []
     for y in range(2000, 2017):
@@ -23,14 +23,18 @@ def merge_weather_data(airport):
     df = df[df['TemperatureF'] != -9999.0]
     df["PrecipitationIn"].fillna(0, inplace = True)
     
-    df.set_index(df.index.tz_localize(pytz.UTC).tz_convert(pytz.timezone('US/Central')),
+    df.set_index(df.index.tz_localize(pytz.UTC).tz_convert(pytz.timezone('US/' + tz)),
                  inplace = True)
     
     df.rename(columns = {"TemperatureF" : "Temperature [F]", "PrecipitationIn" : "Precipitation [In]"})\
       .to_csv(airport + ".csv")
 
 
-airports = ["PDX", "JFK", "PHL", "LAX", "BOS", "PHX", "DEN", "SFO", "DFW"]
-for a in airports:
-    merge_weather_data(a)
+airports = [["PDX", "Pacific"], ["JFK", "Eastern"], ["PHL", "Eastern"], 
+            ["LAX", "Pacific"], ["BOS", "Eastern"], ["PHX", "Mountain"], 
+            ["DEN", "Mountain"], ["SFO", "Pacific"], ["DFW", "Central"],
+            ["MCO", "Eastern"]]
+
+for a, tz in airports:
+    merge_weather_data(a, tz)
 
