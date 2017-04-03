@@ -33,8 +33,8 @@ def merge_weather_data(airport, tz):
 airports = [["PDX", "Pacific"], ["JFK", "Eastern"], ["PHL", "Eastern"], 
             ["LAX", "Pacific"], ["BOS", "Eastern"], ["PHX", "Mountain"], 
             ["DEN", "Mountain"], ["SFO", "Pacific"], ["DFW", "Central"],
-            ["MCO", "Eastern"]]
+            ["MCO", "Eastern"], ["MDW", "Central"]]
 
-for a, tz in airports:
+for a, tz in airports[-1:]:
     merge_weather_data(a, tz)
 
