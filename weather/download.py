@@ -40,9 +40,9 @@ for city in ["MDW", "PHX", "PHL", "SFO", "DFW"]:
                     t = float(obs["tempi"])
                     precip = float(obs["precipi"])
                     if precip < 0: precip = 0
-                    time = "{hour}:{min}:00Z".format(**obs["utcdate"])
+                    datetime = "{year}-{mon}-{mday}T{hour}:{min}:00Z".format(**obs["utcdate"])
 
-                    out.write(",".join([date + " " + time, str(t), str(precip)]) + "\n")
+                    out.write(",".join([datetime, str(t), str(precip)]) + "\n")
                     
             sleep(7)
             
