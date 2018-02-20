@@ -1,0 +1,19 @@
+## All higher directories must be 777 or owned by postgres:postgres
+## The data directory itself should be postgres:postgres
+sudo -u postgres psql -U postgres
+CREATE TABLESPACE brobspace LOCATION '/media/jsaxon/brobdingnag/pgdata'; 
+GRANT ALL PRIVILEGES ON TABLESPACE brobspace TO jsaxon;
+
+
+createdb traces -O jsaxon -D brobspace
+
+sudo -u postgres psql traces -U postgres
+CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_topology;
+
+GRANT USAGE ON SCHEMA topology TO public;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA topology TO public;
+GRANT SELECT ON ALL TABLES IN SCHEMA topology TO public;
+
+GRANT SELECT, DELETE, INSERT ON ALL TABLES IN SCHEMA topology TO jsaxon;
+
